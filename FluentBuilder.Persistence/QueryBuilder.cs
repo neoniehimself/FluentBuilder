@@ -10,13 +10,13 @@ namespace FluentBuilder.Persistence
         /// </summary>
         /// <typeparam name="TEntity">The TEntity class</typeparam>
         /// <param name="query">The DbSet of TEntity</param>
-        /// <param name="includeOption">The IncludeOption instance that contains the configured properties of TEntity</param>
+        /// <param name="includeOptions">The IncludeOptions instance that contains the configured properties of TEntity</param>
         /// <returns>IQueryable</returns>
-        public static IQueryable<TEntity> Build<TEntity>(IQueryable<TEntity> query, IncludeOption<TEntity>? includeOption = null) where TEntity : class
+        public static IQueryable<TEntity> Build<TEntity>(IQueryable<TEntity> query, IncludeOptions<TEntity>? includeOptions = null) where TEntity : class
         {
-            if (includeOption?.PropertyList != null || includeOption?.PropertyList.Count > 0)
+            if (includeOptions?.PropertyList != null || includeOptions?.PropertyList.Count > 0)
             {
-                foreach (var property in includeOption.PropertyList)
+                foreach (var property in includeOptions.PropertyList)
                 {
                     query = query.Include(property);
                 }
