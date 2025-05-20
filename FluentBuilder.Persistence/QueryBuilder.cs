@@ -14,7 +14,7 @@ namespace FluentBuilder.Persistence
         /// <returns>IQueryable</returns>
         public static IQueryable<TEntity> Build<TEntity>(IQueryable<TEntity> query, IncludeOptions<TEntity>? includeOptions = null) where TEntity : class
         {
-            if (includeOptions?.PropertyList != null || includeOptions?.PropertyList.Count > 0)
+            if (includeOptions?.PropertyList != null && includeOptions?.PropertyList.Count > 0)
             {
                 foreach (var property in includeOptions.PropertyList)
                 {
